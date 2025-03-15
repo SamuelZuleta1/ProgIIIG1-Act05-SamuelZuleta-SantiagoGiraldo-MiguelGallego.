@@ -68,3 +68,18 @@ hermana(X, Y) :- es_padre_de(_, Lista), member(X, Lista), member(Y, Lista), X \=
 
 hermana(X, Y) :- es_madre_de(_, Lista), member(X, Lista), member(Y, Lista), X \= Y, mujeres(Mujeres), member(X, Mujeres).
 
+# Tí@
+
+tio(X, Y) :- hermano(X, Z), (es_padre_de(Z, ListaHijos); es_madre_de(Z, ListaHijos)), member(Y, ListaHijos), hombres(Hombres), member(X, Hombres).
+
+tia(X, Y) :- hermana(X, Z), (es_padre_de(Z, ListaHijos); es_madre_de(Z, ListaHijos)), member(Y, ListaHijos), mujeres(Mujeres), member(X, Mujeres).
+
+# Prim@
+primo(X, Y) :- (es_padre_de(Z, ListaHijosX); es_madre_de(Z, ListaHijosX)), member(X, ListaHijosX), (es_padre_de(W, ListaHijosY);
+es_madre_de(W, ListaHijosY)),  member(Y, ListaHijosY), (hermano(Z, W); hermana(Z, W)), hombres(Hombres), member(X, Hombres).
+
+prima(X, Y) :- (es_padre_de(Z, ListaHijosX); es_madre_de(Z, ListaHijosX)), member(X, ListaHijosX), (es_padre_de(W, ListaHijosY);
+es_madre_de(W, ListaHijosY)), member(Y, ListaHijosY), (hermano(Z, W); hermana(Z, W)), mujeres(Mujeres), member(X, Mujeres).
+
+# Sobrino
+sobrino(X, Y) :- (es_padre_de(Z, ListaHijos); es_madre_de(Z, ListaHijos)), member(X, ListaHijos), (hermano(Y, Z); hermana(Y, Z)), hombres(Hombres), member(X, Hombres).
