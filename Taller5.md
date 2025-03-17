@@ -83,3 +83,5 @@ es_madre_de(W, ListaHijosY)), member(Y, ListaHijosY), (hermano(Z, W); hermana(Z,
 
 # Sobrino
 sobrino(X, Y) :- (es_padre_de(Z, ListaHijos); es_madre_de(Z, ListaHijos)), member(X, ListaHijos), (hermano(Y, Z); hermana(Y, Z)), hombres(Hombres), member(X, Hombres).
+
+d
